@@ -1,0 +1,37 @@
+@if (errorOccurred) {
+  <div class="error-message">
+    <p>Veuillez remplir tous les champs.</p>
+  </div>}
+
+<form class="grid" #filmForm="ngForm" (ngSubmit)="add(filmForm)">
+  <!-- <label for="id">id</label>
+  <input name="id" type="number" [(ngModel)]="selectedFilm.id" required /> -->
+
+  <label for="nom">Titre</label>
+    <input name="nom" type="text" [(ngModel)]="selectedFilm.nom" required />
+
+
+  <label for="annee">Année</label>
+  <input name="annee" type="number" [(ngModel)]="selectedFilm.annee" required />
+
+  <label for="realisateur">Réalisateur</label>
+  <input type="text" name="realisateur" [(ngModel)]="selectedFilm.realisateur" required />
+
+  <label for="synopsis">Synopsis</label>
+  <input type="text" name="synopsis" [(ngModel)]="selectedFilm.synopsis" required/>
+
+@if (showAddForm || !showEditButton)
+{
+  <div>
+    <button type="button" (click)="add(filmForm)">Création</button>
+  </div>
+}
+
+@if (selectedFilm && showEditButton)
+{
+  <div>
+    <button type="button" (click)="edit(filmForm)">Modification</button>
+  </div>
+}
+</form>
+

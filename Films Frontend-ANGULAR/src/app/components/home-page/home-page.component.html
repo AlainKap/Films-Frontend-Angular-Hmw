@@ -1,0 +1,16 @@
+<header>
+  <h1>
+    Best movies
+  </h1>
+
+    <button (click)="toggleFilmComponent()">
+      {{ showAddForm ? 'Refermer la liste des films' : 'Afficher la liste des films' }}
+    </button>
+</header>
+<section>
+  @if(showAddForm) {
+    <app-film></app-film>
+  }
+</section>
+
+

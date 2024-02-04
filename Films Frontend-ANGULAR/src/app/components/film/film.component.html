@@ -1,0 +1,67 @@
+<div class="fond">
+  <table class="apae">
+    <thead class="beggin">
+      <tr>
+        <th>Id</th>
+        <th>Titre</th>
+        <th>Année</th>
+        <th>Réalisateur</th>
+        <th>Synopsis</th>
+        <th>Créé le </th>
+        <th>Dernière mise à jour</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for(film of films; track film.id; let index = $index;) {
+      <tr
+        [ngClass]="{
+          'couleur-bleue': film.annee < 2000,
+          'couleur-rouge': film.annee >= 2000
+        }"
+      >
+        <td>{{ film.id }}</td>
+        <td>{{ film.nom }}</td>
+        <td>{{ film.annee }}</td>
+        <td>{{ film.realisateur }}</td>
+        <td>{{ film.synopsis }}</td>
+        <td>{{ film.createdAt | date: 'dd/MM/yyyy - HH:mm'}}</td>
+        <td>{{ film.updatedAt | date: 'dd/MM/yyyy - HH:mm'}}</td>
+        <td>
+          <button (click)="selectFilm(film)">Editer</button>
+        </td>
+        <td><button (click)="removeItem(index, film)">Supprimer</button></td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>
+
+<div class="btn-ajout">
+  <button (click)="showAddForm = true; showAddButton = false">Ajout</button>
+  <!-- <button (click)="showAddForm = true">Ajout</button> -->
+</div>
+
+@if(showAddForm) {
+<app-add (createEmitter)="addItem($event)"
+[showAddButton]="showAddButton"/>
+<button type="button" class="btn-ajout" (click)="showAddForm = false; showAddButton = true">
+  Fermer le formulaire
+</button>
+
+}
+ @else if(selectedFilm) {
+<app-add
+  (editEmitter)="editItem($event)"
+  [selectedFilm]="selectedFilm"
+  [showEditButton]="showEditButton"
+/>
+<!-- <button type="button" class="btn-ajout" (click)="showAddForm = false; showEditButton = true">
+  Fermer le formulaire
+</button> -->
+<!-- <button type="button" class="btn-ajout" (click)="closeAddForm()">
+  Fermer le formulaire
+</button> -->
+
+
+}
+

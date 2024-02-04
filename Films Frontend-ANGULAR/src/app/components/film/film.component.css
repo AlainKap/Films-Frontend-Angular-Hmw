@@ -1,0 +1,33 @@
+.couleur-bleue {
+  background-color: 	rgb(30,144,255);
+}
+
+.couleur-rouge {
+  background-color: rgb(202, 30, 30);
+color: aliceblue;
+}
+.btn-ajout {
+  margin: 35px;
+}
+.apae {
+  margin: 30px;
+  border: solid blue;
+
+}
+.beggin{
+  border: solid blue;
+  text-align: center;
+  border-radius: 15px;
+}
+
+th, td{
+  border: 1px solid black;
+  padding: 10px;
+  vertical-align: top;
+}
+.fond{
+  background-color: rgba(221, 214, 214, 0.687);
+  border-radius: 15px;
+  padding: 5px;
+  margin: 8px;
+}
